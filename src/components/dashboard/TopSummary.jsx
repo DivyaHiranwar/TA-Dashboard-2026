@@ -1,5 +1,5 @@
 import { Users, DollarSign, Clock, Target, TrendingUp, Briefcase, CheckCircle2, AlertCircle } from 'lucide-react'
-import { formatCurrency, formatPercent, formatDays } from '@/lib/utils'
+import { formatCurrency, formatRupee, formatPercent, formatDays } from '@/lib/utils'
 import { ExplanationBanner } from './ExplanationBanner'
 
 function MetricCard({ icon: Icon, label, value, sub, color, trend }) {
@@ -61,7 +61,7 @@ export function TopSummary({ data }) {
     {
       icon: DollarSign,
       label: 'Avg Cost / Hire',
-      value: summary.avgCostPerHire > 0 ? formatCurrency(summary.avgCostPerHire) : '₹0',
+      value: summary.avgCostPerHire > 0 ? formatRupee(summary.avgCostPerHire) : '₹0',
       sub: 'All direct sourcing',
       color: 'cyan',
     },

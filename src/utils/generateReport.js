@@ -8,6 +8,10 @@ function currency(v) {
   return v > 0 ? `₹${v.toFixed ? v.toFixed(1) : v}L` : '₹0'
 }
 
+function rupee(v) {
+  return v > 0 ? `₹${Number(v).toLocaleString('en-IN', { maximumFractionDigits: 2 })}` : '₹0'
+}
+
 export function generateReport(data) {
   const { summary, financial, volume, compensation, speed, quality, source, pipeline } = data
 
@@ -172,8 +176,8 @@ export function generateReport(data) {
     </div>
     <div class="kpi">
       <div class="kpi-label">Avg Cost / Hire</div>
-      <div class="kpi-value">₹0</div>
-      <div class="kpi-sub">100% direct sourcing</div>
+      <div class="kpi-value">${rupee(summary.avgCostPerHire)}</div>
+      <div class="kpi-sub">${summary.avgCostPerHire > 0 ? 'Avg across ' + summary.totalHiresYTD + ' hires' : '100% direct sourcing'}</div>
     </div>
     <div class="kpi">
       <div class="kpi-label">Avg Time to Fill</div>
@@ -213,8 +217,8 @@ export function generateReport(data) {
   <div class="kpi-grid">
     <div class="kpi">
       <div class="kpi-label">Avg Cost / Hire</div>
-      <div class="kpi-value">₹0</div>
-      <div class="kpi-sub">Direct sourcing only</div>
+      <div class="kpi-value">${rupee(financial.avgCostPerHire)}</div>
+      <div class="kpi-sub">${financial.avgCostPerHire > 0 ? 'Avg across ' + summary.totalHiresYTD + ' hires' : 'Direct sourcing only'}</div>
     </div>
     <div class="kpi">
       <div class="kpi-label">Agency Spend</div>

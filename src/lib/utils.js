@@ -10,6 +10,12 @@ export function formatCurrency(value, decimals = 2) {
   return `₹${Number(value).toFixed(decimals)}L`
 }
 
+// For raw INR values (not in Lakhs) — e.g. Cost Per Hire
+export function formatRupee(value) {
+  if (value === null || value === undefined || isNaN(value)) return '—'
+  return `₹${Number(value).toLocaleString('en-IN', { maximumFractionDigits: 2 })}`
+}
+
 export function formatNumber(value) {
   if (value === null || value === undefined || isNaN(value)) return '—'
   return Number(value).toLocaleString('en-IN')

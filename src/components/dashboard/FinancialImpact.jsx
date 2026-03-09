@@ -6,7 +6,7 @@ import {
 } from 'recharts'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
-import { formatCurrency } from '@/lib/utils'
+import { formatCurrency, formatRupee } from '@/lib/utils'
 
 const COLORS = ['#7c3aed', '#06b6d4', '#10b981', '#f59e0b', '#f43f5e', '#8b5cf6']
 
@@ -93,7 +93,7 @@ export function FinancialImpact({ data }) {
     {
       label: 'Avg Cost / Hire',
       text: financial.avgCostPerHire > 0
-        ? `${formatCurrency(financial.avgCostPerHire)} average across ${totalHires} hire${totalHires !== 1 ? 's' : ''} with recorded cost-per-hire values. Industry avg with agency: ₹5–15L per hire.`
+        ? `${formatRupee(financial.avgCostPerHire)} average across ${totalHires} hire${totalHires !== 1 ? 's' : ''} with recorded cost-per-hire values. Industry avg with agency: ₹5–15L per hire.`
         : `₹0 — all ${totalHires} hires sourced directly with zero agency or referral fees. Estimated savings vs agency: ₹5–15L per hire (industry avg 8–15% of first-year CTC).`,
     },
     {
@@ -131,7 +131,7 @@ export function FinancialImpact({ data }) {
               <div>
                 <p className="text-xs text-muted-foreground uppercase tracking-wider">Avg Cost/Hire</p>
                 <p className="text-2xl font-bold text-violet-400">
-                  {financial.avgCostPerHire > 0 ? formatCurrency(financial.avgCostPerHire) : '₹0'}
+                  {financial.avgCostPerHire > 0 ? formatRupee(financial.avgCostPerHire) : '₹0'}
                 </p>
                 <p className="text-xs text-muted-foreground mt-0.5">
                   {financial.avgCostPerHire > 0 ? `Avg across ${totalHires} hire${totalHires !== 1 ? 's' : ''}` : 'Direct sourcing'}
