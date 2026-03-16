@@ -10,6 +10,7 @@ import { HiringSpeed } from '@/components/dashboard/HiringSpeed'
 import { QualityOfHire } from '@/components/dashboard/QualityOfHire'
 import { SourceROI } from '@/components/dashboard/SourceROI'
 import { PipelineHealth } from '@/components/dashboard/PipelineHealth'
+import { PipelineView } from '@/components/dashboard/PipelineView'
 import { useSheetData } from '@/hooks/useSheetData'
 import { filterDataByMonths, getAvailableMonths } from '@/utils/filterData'
 import { generateReport } from '@/utils/generateReport'
@@ -241,7 +242,7 @@ export default function App() {
                 <PipelineHealth data={data} />
               </TabsContent>
               <TabsContent value="pipeline-view">
-                <PipelineHealth data={data} showExplanation={false} />
+                <PipelineView data={data} />
               </TabsContent>
             </Tabs>
           ) : null}
