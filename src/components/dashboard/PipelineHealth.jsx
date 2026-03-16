@@ -55,7 +55,7 @@ function RiskScore({ score, label }) {
   )
 }
 
-export function PipelineHealth({ data }) {
+export function PipelineHealth({ data, showExplanation = true }) {
   if (!data) return null
   const { pipeline, summary } = data
 
@@ -111,7 +111,7 @@ export function PipelineHealth({ data }) {
 
   return (
     <div className="space-y-5 animate-fade-in">
-      <ExplanationBanner title="Pipeline Health — Metric Guide" items={pipelineExplanations} />
+      {showExplanation && <ExplanationBanner title="Pipeline Health — Metric Guide" items={pipelineExplanations} />}
       {/* Pipeline KPIs */}
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
         {[

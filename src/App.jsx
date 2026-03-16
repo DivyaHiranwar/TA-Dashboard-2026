@@ -15,7 +15,7 @@ import { filterDataByMonths, getAvailableMonths } from '@/utils/filterData'
 import { generateReport } from '@/utils/generateReport'
 import {
   DollarSign, Users, TrendingUp, Zap, Award, GitBranch,
-  Activity, AlertCircle, RefreshCw, Filter, X,
+  Activity, LayoutDashboard, AlertCircle, RefreshCw, Filter, X,
 } from 'lucide-react'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
@@ -27,7 +27,8 @@ const TABS = [
   { id: 'speed',        label: 'Speed & SLA',        icon: Zap,        color: 'text-amber-400' },
   { id: 'quality',      label: 'Quality of Hire',    icon: Award,      color: 'text-rose-400' },
   { id: 'source',       label: 'Source ROI',         icon: GitBranch,  color: 'text-sky-400' },
-  { id: 'pipeline',     label: 'Pipeline Health',    icon: Activity,   color: 'text-indigo-400' },
+  { id: 'pipeline',      label: 'Pipeline Health',   icon: Activity,        color: 'text-indigo-400' },
+  { id: 'pipeline-view', label: 'Pipeline View',    icon: LayoutDashboard, color: 'text-teal-400' },
 ]
 
 const MONTH_LABELS = {
@@ -238,6 +239,9 @@ export default function App() {
               </TabsContent>
               <TabsContent value="pipeline">
                 <PipelineHealth data={data} />
+              </TabsContent>
+              <TabsContent value="pipeline-view">
+                <PipelineHealth data={data} showExplanation={false} />
               </TabsContent>
             </Tabs>
           ) : null}
